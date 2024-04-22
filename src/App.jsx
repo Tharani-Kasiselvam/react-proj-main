@@ -1,9 +1,13 @@
-const App = () => {
-  const now = new Date();    <h1>Hello World</h1>
-
-  return(
-    <p>Hellow World, Time is: <b><i>{now.toString()}</i></b></p>
+import Greet from "./components/Greet";
+ const App = () => {
+  return (
+    <div>
+      <h1>Greetings!</h1>
+      <Greet name="Manoj" lname="Jayan"/>
+      <Greet name="Tharani"/>
+      <Greet name="Jacintha"/>
+      <Greet name="Theeran"/>
+    </div>
   )
 }
-
-export default App;
+export default App
