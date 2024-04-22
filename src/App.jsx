@@ -1,8 +1,8 @@
-function App(){
+const App = () => {
+  const now = new Date();    <h1>Hello World</h1>
+
   return(
-    <div>
-    <h1>Hello World</h1>
-    </div>
+    <p>Hellow World, Time is: <b><i>{now.toString()}</i></b></p>
   )
 }
 
