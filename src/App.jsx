@@ -1,13 +1,11 @@
-import Greet from "./components/Greet";
- const App = () => {
+import Hello from "./components/Hello"
+const App = () => {
+  const usrname = "Tharani"
   return (
     <div>
-      <h1>Greetings!</h1>
-      <Greet name="Manoj" lname="Jayan"/>
-      <Greet name="Tharani"/>
-      <Greet name="Jacintha"/>
-      <Greet name="Theeran"/>
+      <Hello user = {usrname}/>
     </div>
   )
 }
+
 export default App
