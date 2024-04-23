@@ -1,43 +1,21 @@
-import { Component } from 'react'
-import Counter from './components/Counter'
+import TextChild from "./components/TextChild";
+import { useState } from "react";
 
-export class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {counter:0}
+
+const App = () => {
+  const [prntInput, setPrntnput] = useState('');
+  
+  const updatePrntTxt = (childText) =>{
+    setPrntnput(childText);
   }
 
-    handleIncre = () =>{
-      this.setState({
-        counter: this.state.counter + 1
-    })
-    }
-
-    handleDecre = () =>{
-      this.setState({
-        counter: this.state.counter - 1
-      })
-      }
-
-      handleRst = () => {
-        this.setState({
-          counter: 0
-        })
-      }
-
-  render() {
-    return (
-      <div>
-      <div>
-        <Counter counter={this.state.counter} />
-      </div>
-        <div><button onClick={this.handleIncre}>Increment</button>
-            <button onClick={this.handleDecre}>Decrement</button>
-            <button onClick={this.handleRst}>Reset</button> 
-        </div>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <label htmlFor="parentInput">Parent Text </label>
+      <input type='text' id="prntInput" value={prntInput} onChange={(e)=>setPrntnput(e.target.value)}/>
+      <TextChild updatePrntTxt={updatePrntTxt}/>
+    </div>
+  )
 }
 
-export default App
+export default App;
