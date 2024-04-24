@@ -1,21 +1,26 @@
-import TextChild from "./components/TextChild";
-import { useState } from "react";
-
+import { useState } from "react"
 
 const App = () => {
-  const [prntInput, setPrntnput] = useState('');
-  
-  const updatePrntTxt = (childText) =>{
-    setPrntnput(childText);
+
+  const[counter,setCounter]=useState(0)
+
+  const hndlPlus = () =>{
+      setCounter(counter+1)
   }
+
+  const hndlMinus = () =>{
+    setCounter(counter-1)
+} 
 
   return (
     <div>
-      <label htmlFor="parentInput">Parent Text </label>
-      <input type='text' id="prntInput" value={prntInput} onChange={(e)=>setPrntnput(e.target.value)}/>
-      <TextChild updatePrntTxt={updatePrntTxt}/>
+    <div>Counter: {counter}</div>
+    <div>
+      <button onClick={hndlPlus}>Plus</button>
+      <button onClick={hndlMinus}>Minus</button>
     </div>
-  )
+
+    </div>  )
 }
 
-export default App;
+export default App
