@@ -12,12 +12,18 @@ const App = () => {
     setCounter(counter-1)
 } 
 
+const hndlZe = () =>{
+  setCounter(0)
+}
+
   return (
     <div>
     <div>Counter: {counter}</div>
     <div>
       <button onClick={hndlPlus}>Plus</button>
       <button onClick={hndlMinus}>Minus</button>
+      <button onClick={hndlZe}>Zero</button>
+
     </div>
 
     </div>  )
