@@ -10,11 +10,17 @@ const router = createBrowserRouter([
     element:<Home />,
     children: [
       {
-        path:"/login",
-        element: <Login />
+        path:"login",
+        element: <Login />,
+        children: [
+          {
+            path:"forgot",
+            element: <h3>Password reset done, kindly verify your email</h3>
+          }
+        ]
       },
       {
-        path:"/register",
+        path:"register",
         element: <Register />
       },
     ]
