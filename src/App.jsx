@@ -1,21 +1,19 @@
-import TextChild from "./components/TextChild";
-import { useState } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import Home from "./components/Home"
+import About from "./components/About"
 
-
-const App = () => {
-  const [prntInput, setPrntnput] = useState('');
-  
-  const updatePrntTxt = (childText) =>{
-    setPrntnput(childText);
+const router = createBrowserRouter([
+  {
+    path:"/",
+    element:<Home />
+  },
+  {
+    path:"/about",
+    element: <About />
   }
-
-  return (
-    <div>
-      <label htmlFor="parentInput">Parent Text </label>
-      <input type='text' id="prntInput" value={prntInput} onChange={(e)=>setPrntnput(e.target.value)}/>
-      <TextChild updatePrntTxt={updatePrntTxt}/>
-    </div>
-  )
+])
+const App = () => {
+  return <RouterProvider router={router}/>
 }
 
-export default App;
+export default App
