@@ -1,33 +1,27 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import Home from "./components/Home"
-import About from "./components/About"
-import Login from "./components/Login"
-import Register from "./components/Register"
+import React from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Home from './components/Home'
+import Register from './components/Register'
+import Login from './components/Login'
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<Home />,
-    children: [
-      {
-        path:"login",
-        element: <Login />,
-        children: [
-          {
-            path:"forgot",
-            element: <h3>Password reset done, kindly verify your email</h3>
-          }
-        ]
-      },
-      {
-        path:"register",
-        element: <Register />
-      },
-    ]
+    path : "/",
+    element : <Home />
+  },
+  {
+    path : "register",
+    element : <Register />
+  },
+  {
+    path : "login",
+    element : <Login />
   }
-  ])
+])
+
 const App = () => {
   return <RouterProvider router={router}/>
 }
 
 export default App
+
