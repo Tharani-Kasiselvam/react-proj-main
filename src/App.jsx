@@ -1,77 +1,38 @@
 import { createContext } from "react"
-import { useState } from "react";
-import TaskForm from "./components/TaskForm";
-import TaskList from "./components/TaskList";
-import Notification from "./components/Notification";
+import { useState } from "react"
+import { useRef } from "react"
+import TestProf from "./components/TestProf"
 
-export const NotifcationContext = createContext();
+export const ProfContext = createContext()
 
 const App = () => {
+    const nameNoteRef = useRef(null)
+    const [profName,setprofName] = useState("Tharani")
 
-    const [tasks, setTasks] = useState([
-        {
-            id : 1,
-            title : "Task 1",
-            completed : false 
-        },
-        {
-            id : 2,
-            title : "Task 2",
-            completed : true 
-        },
-    ])
-    
-    const [notification,setNotification] = useState({
-            message :"",
-            visible : false
-        })
-    
-        const showNotification = (message) => {
-            setNotification({
-                message,
-                visible : true
-            })
-    
-            setTimeout(()=>{
-                setNotification({
-                    message : "",
-                    visible : false
-                })
-            }, 2000)
-        }
-    
-        const addTask = (title) => {
-            const newTask = {
-                id : tasks.length + 1,
-                title,
-                completed : false 
-            }
-    
-            setTasks([...tasks, newTask])
-            showNotification("Task added successfully")
-        }
-    
-        const toggleTask = (id) => {
-            const updatedTasks = tasks.map(task => {
-                if(task.id === id){
-                    task.completed = !task.completed
-                }
-                return task
-            })
-    
-            setTasks(updatedTasks)
-        }
+    const dispNoteVal = () => {
+        alert(nameNoteRef.current.value)
+    }
+
+    const changeProf = (newProf)=>  {
+        setprofName(newProf)
+    }
 
   return (
-    <NotifcationContext.Provider value = {{notification, showNotification, addTask, toggleTask, tasks}} >
-    {/* we can provide any no.of Components within Provider */}
-        <div>
-        <h1>Task Manager</h1>
-        <Notification />
-        <TaskList />
-        <TaskForm />
-        </div>
-    </NotifcationContext.Provider>
+    <div>
+        
+        {/* Using useRef for Prev ex-Profile */}
+        <ProfContext.Provider value={{changeProf}}>
+            {/* Prob#1 with UseRef */}
+        <input type="text" placeholder="enter name" ref={nameNoteRef}/>
+        <button onClick={dispNoteVal}>AddNote</button>
+        <br /><br />
+          {/* Prob#2 with existing ContextAPI */}
+        <p>
+            Profile Name: {profName}
+        </p>
+        <TestProf />
+        </ProfContext.Provider>
+    </div>
   )
 }
 
