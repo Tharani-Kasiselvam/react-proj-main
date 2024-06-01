@@ -9,7 +9,17 @@ function countChangeReducer(state,action){
         case 'add' : 
             return {
                 count : state.count + 1
-            }
+        }
+        
+        case 'minus' : 
+        return {
+            count : state.count - 1
+        }
+
+        case 'zero' : 
+        return {
+            count : 0
+        }
     }
 }
 
