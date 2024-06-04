@@ -1,20 +1,18 @@
-import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Home from './components/Home'
-import About from './components/About'
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
-  const router = createBrowserRouter([
-    {
-      path : "/",
-      element : <Home />
-    },
-    {
-      path : "/about",
-      element : <About />
-    }
-  ])
-  return <RouterProvider router={router}/>
+  const [cart,setCart] = useState()
+
+  useEffect(()=>{
+    fetch('/src/assets/product.json')
+    .then(res => res.json())
+    .then(data => setCart(data))
+  },[])
+  console.log(cart)
+
+  return (
+    <div>App</div>
+  )
 }
 
 export default App
