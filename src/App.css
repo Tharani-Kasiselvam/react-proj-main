@@ -1,0 +1,37 @@
+.header{
+    margin: 20px;
+}
+
+.square{
+    border : 3px solid #0DA192;
+    width  : 60px;
+    height : 60px;
+    background-color: white;
+    font-size: 30px;
+    text-align: center;
+    background-color: #14BDAC;
+    color : black;
+    /* float : left; */
+}
+
+.row:first-child .square{
+    border-top: 0;
+}
+
+.row:nth-child(3) .square{
+    border-bottom: 0;
+}
+
+.square:first-child{
+    border-left: 0;    
+}
+
+.square:nth-child(3) {
+    border-right: 0;    
+}
+
+/* .row::after{
+    clear:both;
+    content:"";
+    display: table;
+} */
